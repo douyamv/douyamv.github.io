@@ -1,14 +1,27 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="Zcode Mobile 技术支持">
   <title>Zcode Mobile 技术支持</title>
   <link rel="stylesheet" href="styles.css">
+<style>
+  html[data-language="en"] [data-language="zh"], html[data-language="zh"] [data-language="en"] { display: none; }
+  .language-nav { max-width: 1080px; margin: 18px auto; padding: 0 24px; display: flex; gap: 24px; }
+  [data-language="en"] p { line-height: 1.75; }
+</style>
+<script>
+  const requestedLanguage = new URLSearchParams(location.search).get('lang');
+  const pageLanguage = ['zh', 'en'].includes(requestedLanguage) ? requestedLanguage : (navigator.language.toLowerCase().startsWith('zh') ? 'zh' : 'en');
+  document.documentElement.dataset.language = pageLanguage;
+  document.documentElement.lang = pageLanguage === 'zh' ? 'zh-CN' : 'en';
+  document.title = 'Zcode Mobile · Support';
+</script>
 </head>
 <body>
-  <main class="shell">
+<nav class="language-nav" aria-label="Language"><a href="?lang=en" lang="en">English</a><a href="?lang=zh" lang="zh-CN">简体中文</a></nav>
+  <main class="shell" data-language="zh">
     <div class="brand"><div class="mark">Z</div><div><h1>Zcode Mobile</h1><p>技术支持</p></div></div>
     <section class="hero">
       <span class="pill">iPhone · iPad · 局域网工作区</span>
@@ -16,7 +29,7 @@
       <p>Zcode Mobile 是一款面向 ZCode 桌面工作区的第三方移动连接工具。你可以扫描电脑端连接码、从相册导入二维码，或在局域网内发现兼容服务。本应用并非 ZCode 官方产品。</p>
       <div class="row"><a class="button" href="#connect">连接帮助</a><a class="button secondary" href="privacy.html">隐私政策</a></div>
     </section>
-    <div class="grid" id="connect">
+    <div class="grid" id="connect"><section class="card"><h3>体验英文界面</h3><p>在连接页点击“Language / 语言”，选择 English 即可，无需更换 Apple 账号。自动模式在中国大陆 App Store 地区显示中文，其他地区显示英文；无法读取时按设备地区兜底。工作区本身的界面和内容由所连接的电脑端服务提供，不会自动翻译。</p></section>
       <section class="card"><h3>开始连接</h3><ol><li>在电脑端打开 ZCode 的移动远程控制功能。</li><li>在移动端点击“扫描二维码连接”。</li><li>也可以从系统相册导入连接码。</li><li>验证工作区可用后，应用会自动进入工作区。</li></ol></section>
       <section class="card"><h3>无法连接</h3><ul><li>确认手机与电脑在同一局域网。</li><li>确认电脑端远程控制仍在运行。</li><li>重新生成二维码并再次扫描。</li><li>在 iOS 设置中允许相机和局域网权限。</li></ul></section>
       <section class="card"><h3>重新扫码或断开</h3><p>进入工作区后，点击屏幕右侧中上部的淡色操作按钮，可以重新扫码、刷新或断开当前连接。</p></section>
@@ -24,6 +37,29 @@
     </div>
     <p class="footer">Zcode Mobile 2.1 包含可选推广和 Google 非个性化广告；不要求开启系统追踪，广告可跳过。第三方 SDK 的必要数据处理见隐私政策。工作区内容直接与用户选择的兼容服务通信。</p>
   </main>
+<main class="shell" data-language="en">
+<h1>Zcode Mobile Support</h1>
+<p>Zcode Mobile is an independent third-party mobile client for a compatible ZCode desktop workspace. It is not an official ZCode product.</p>
+<h2>Getting connected</h2>
+<p>1. Open ZCode&#39;s mobile remote-control feature on your computer.<br>2. Open Zcode Mobile on your iPhone or iPad.<br>3. Tap &quot;Scan QR code to connect&quot;, choose &quot;Import from Photos&quot;, or use &quot;Enter LAN address manually&quot;.<br>4. For manual entry, use an address such as 192.168.1.20:8080, MacBook.local:8080, or an HTTPS URL. Plain HTTP is allowed only for private LAN addresses.<br>5. Allow Local Network access when iOS asks. The app opens the workspace only after verifying that it is reachable.</p>
+<h2>How do I experience the English interface?</h2>
+<p>Tap &quot;Language / 语言&quot; on the connection screen and choose English. You do not need to change your Apple account or system language. Automatic mode uses Chinese for the mainland China App Store storefront and English elsewhere; when the storefront is unavailable, the device region is used as a fallback. The chosen language is stored on your device.</p>
+<p>Workspace text, messages, code, and the desktop service&#39;s own interface come from the service you connect to. They are not automatically translated or sent to a translation service.</p>
+<h2>I cannot connect</h2>
+<p>- For LAN access, ensure your phone and computer can reach each other on the same local network.<br>- Make sure the computer service listens on a LAN interface, not only 127.0.0.1. On your phone, localhost and 127.0.0.1 refer to the phone itself.<br>- Keep desktop remote control running. Generate a fresh QR code if the address or token changed.<br>- Check camera and Local Network permissions in iOS Settings.<br>- Guest Wi-Fi or client isolation may prevent devices from communicating even on the same Wi-Fi name.</p>
+<h2>Rescan, refresh, or disconnect</h2>
+<p>In a workspace, tap the faint &quot;+&quot; control on the right side to open the mobile controls. Use the conversation handle to open a compatible workspace&#39;s conversation sidebar.</p>
+<h2>Optional promotions and ads</h2>
+<p>After 10 cumulative foreground minutes in an online workspace, an optional page labeled Sponsored may appear. Skip is available immediately. After you skip or handle it, it will not appear again for at least two days. It never appears on the connection screen.</p>
+<p>Shopping promotion links and &quot;View ad&quot; are separate choices. A shopping button opens a clearly labeled external affiliate URL. &quot;View ad&quot; first explains Google&#39;s data use and asks for your agreement. Required regional privacy choices are handled with Google UMP before an ad is requested.</p>
+<p>Google ads use non-personalized requests with publisher first-party ID disabled. The Google flow does not request or require iOS tracking permission. When ready, the ordinary full-screen ad is shown automatically; there is no second Play tap. Ads may be video, image, or rich media. No cash or in-app reward is offered. Skipping, canceling, denied tracking, failed loading, or no available ad never restricts your workspace.</p>
+<p>Leaving the page, opening privacy settings, or backgrounding while loading cancels pending automatic presentation. Where required, open &quot;Ads and privacy settings&quot; to review Google&#39;s privacy options. Advertising SDKs still process necessary information; non-personalized does not mean no data processing. See the Privacy Policy.</p>
+<h2>Connection data and credentials</h2>
+<p>Workspace traffic goes directly to the service you choose. The developer runs no account or workspace analytics server and does not receive your connection credentials, conversations, or code from the app.</p>
+<p>To clear saved credentials, leave both username and password empty in connection settings and save a valid connection. Uninstalling removes app-container data, but iOS Keychain items can persist; clear credentials first if necessary.</p>
+<h2>Contact support</h2>
+<p>Email 1459636830@qq.com with the problem, iOS version, Zcode Mobile version, and a screenshot. Do not include passwords, tokens, private code, or other sensitive credentials.<br></p>
+<p><a href="privacy.html?lang=en">Privacy Policy</a></p>
+</main>
 </body>
 </html>
-
